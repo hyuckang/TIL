@@ -1,7 +1,5 @@
 # vector
 
----
-
 ```cpp
 vector<int> A = {1, 2, 3, 4, 5}
 
@@ -11,7 +9,7 @@ A.push_back(20)  // {1, 2, 3, 4, 5, 10, 20}
 A.pop_back()     // {1, 2, 3, 4, 5, 10}
 A.pop_back()     // {1, 2, 3, 4, 5}
 
-// 원소 접근
+// elemental access
 A.at(0)   // 1
 A[0]      // 1
 A.at(3)   // 4
