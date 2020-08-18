@@ -1,6 +1,8 @@
 # vector
 
 ```cpp
+#include <vector>
+
 vector<int> A = {1, 2, 3, 4, 5}
 
 // push_back, O(1)
