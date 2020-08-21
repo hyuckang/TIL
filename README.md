@@ -1,2 +1,2 @@
-# CS
-hyuckang's CS 
+# til
+hyuckang's til(today i learned)
