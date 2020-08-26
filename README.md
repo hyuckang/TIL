@@ -7,7 +7,7 @@ Today I Learned
 
 * C++
 	+ STL
-		- [vector](./ C++/STL/vector)
+		- [vector](./C++/STL/vector)
 		- [queue](./C++/STL/queue)
 		- [set](./C++/STL/set)
 		- [map](./C++/STL/map)
