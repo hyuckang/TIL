@@ -24,8 +24,8 @@ int main()
 
     // erase, O(N)
     A.erase(A.begin() + 2); // {1, 2, 4, 5}
-    A.erase(A.end());       // Error!
     A.erase(A.end() - 1);   // {1, 2, 3, 4}
+    // A.erase(A.end());    -> Error!
 
     // insert, O(N)
     A.insert(A.begin(), 10);      // {10, 1, 2, 3, 4}
