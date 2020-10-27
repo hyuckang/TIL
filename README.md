@@ -7,10 +7,10 @@ Today I Learned
 
 * C++
 	+ STL
-		- [vector](./C++/STL/vector)
-		- [queue](./C++/STL/queue)
-		- [set](./C++/STL/set)
-		- [map](./C++/STL/map)
+		- [vector](./C++/STL/vector.md)
+		- [queue](./C++/STL/queue.md)
+		- [set](./C++/STL/set.md)
+		- [map](./C++/STL/map.md)
 
 - Docker
 
