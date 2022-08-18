@@ -1,5 +1,8 @@
-resource "aws_instance" "main_app" {
-  
+resource "aws_instance" "app" {
+  ami           = "ami-00000000000000000"
+  instance_type = "t3.micro"
+
+  vpc_security_group_ids = [aws_security_group.allow_app_traffic.id]
 }
 
 resource "aws_db_instance" "main" {

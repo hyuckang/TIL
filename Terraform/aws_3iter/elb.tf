@@ -9,3 +9,27 @@ resource "aws_lb" "main" {
   ]
   subnets = [aws_subnet.main_pu_web_a.id, aws_subnet.main_pu_web_c.id]
 }
+
+resource "aws_lb_target_group" "main" {
+  name     = "main_default"
+  port     = 8080
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.main.id
+}
+
+resource "aws_lb_target_group_attachment" "main" {
+  target_group_arn = aws_lb_target_group.main.arn
+  target_id        = aws_instance.web.id
+  port             = 8080
+}
+
+resource "aws_lb_listner" "http" {
+  load_balancer_arn = aws_lb.main.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.web.arn
+  }
+}

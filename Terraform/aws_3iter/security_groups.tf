@@ -28,3 +28,14 @@ resource "aws_security_group" "allow_all_outbound_traffic" {
     cidr_block  = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_security_group" "allow_app_traffic" {
+  vpc_id = aws_vpc.main.id
+
+  ingress {
+    description     = "allow_app"
+    from_port       = 8080
+    to_port         = 8080
+    security_groups = [aws_security_group.allow_web_traffic.id]
+  }
+}
