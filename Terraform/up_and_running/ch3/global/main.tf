@@ -15,7 +15,7 @@ terraform {
 
 resource "aws_instance" "example" {
   ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = "t2.micro"
+  instance_type = terraform.workspace == "default" ? "t2.medium" : "t2.micro"
 }
 
 resource "aws_s3_bucket" "terraform_state" {
@@ -47,14 +47,4 @@ resource "aws_dynamodb_table" "terraform_locks" {
     name = "LockID"
     type = "S"
   }
-}
-
-output "s3_bucket_arn" {
-    value = aws_s3_bucket.terraform_state.arn
-    description = "The ARN of the S3 bucket"
-}
-
-output "dynamodb_table_name" {
-    value = aws_dynamodb_table.terraform_locks.arn
-    description = "The name of the DynamoDB table"
 }

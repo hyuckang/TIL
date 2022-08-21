@@ -19,3 +19,21 @@
 - 백엔드로 구성한 S3와 dynamoDB를 삭제하려면 backend 구성을 제거하고, init을 재실행하여 테라폼 상태를 로컬디스크에 복사한 후에 destroy 하면됩니다.
 
 - `terraform init -backend-config=backend.hcl`로 backend 구성을 매개변수로 전달할 수 있습니다.
+
+- 상태 파일을 격리하는 2가지 방법
+  - 작업 공간(`workspace`)을 통한 격리 : 동일한 구성을 빠르게 격리
+  - 파일 레이아웃을 이용한 격리 : 운영 환경에 적합한 격리
+
+- `terraform workspace` : 테라폼 상태를 별도의 이름을 가진 여러 개의 작업 공간에 저장할 수 있다.
+
+- `terraform workspace show` : 현재 작업공간 확인
+- `terraform workspace list` : 작업공간 리스트 확인
+- `terraform workspace new <WORKSPACE_NAME>` : 새로운 작업 공간 생성
+- `terraform workspace select <WORKSPACE_NAME>` : 작업 공간 전환
+
+- `구성 요소(component)` : 일반적으로 함께 배포되는 일관된 리소스 집합
+- 환경(stage, prod 등)과 구성요소(VPC, DB 등)을 별도의 테라폼 폴더 혹은 별도의 상태 파일에서 사용하는 것을 권장
+
+- `variables.tf` : 입력 변수
+- `outputs.tf` : 출력 변수
+- `main.tf` : 리소스
