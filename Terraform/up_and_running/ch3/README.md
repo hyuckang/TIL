@@ -37,3 +37,26 @@
 - `variables.tf` : 입력 변수
 - `outputs.tf` : 출력 변수
 - `main.tf` : 리소스
+---
+- `terraform_remote_state` : 다른 테라폼 구성 세트의 상태 파일에서 정보를 가져와 읽을수 있습니다.
+  ```
+  data "terraform_remote_state" "db" {
+    backend = "s3"
+
+    config = {
+      bucket = "<STATE_BUCKET_NAME>"
+      key    = "stage/data-stores/mysql/terraform.tfstate"
+      region = "us-east-2"
+    }
+  }
+  ```
+- `data.terraform_remote_state.<NAME>.outputs.<ATTRIBUTE>`
+
+---
+- 시크릿을 테라폼 리소스로 전달하는 2가지 방법
+  - 시크릿 저장소(HashiCorp Valut, AWS Secrets Manager)에서 정보를 가져온다.
+  - macOS의 키체인과 같은 툴로 테라폼 외부에서 관리하고 환경 변수를 통해 전달
+    export TF_VAR_db_password="password"
+---
+- file 함수(`file(<PATH>)`) : PATH에서 파일을 읽고 내용을 문자열로 반환
+- `template_file` : data source를 사용해 변수를 가져와 렌더링할 수 있습니다
