@@ -9,6 +9,7 @@ get_obj_resp_json = get_obj_resp.json()
 
 result_arr = get_obj_resp_json['result']
 host_objs = [obj for obj in result_arr if obj['objFamily'] == 'host']
+host_objs.sort(key=lambda obj: obj['objName'])
 
 print(addr)
 for host in host_objs:
